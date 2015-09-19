@@ -3,8 +3,11 @@ import cartridge
 import stripe
 
 from django.utils.translation import ugettext as _
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
+
+CURRENCY = getattr(settings, 'SHOP_CHARGE_CURRENCY', 'usd')
 
 
 class CheckoutError(Exception):
@@ -29,7 +32,7 @@ def payment_handler(request, order_form, order):
     total = order.total
     try:
         charge = stripe.Charge.create(amount=int(total) * 100,
-                                      currency="usd",
+                                      currency=CURRENCY,
                                       card=tok,
                                       description=order)
         return charge.id
