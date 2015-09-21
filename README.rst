@@ -34,10 +34,13 @@ or copy it to the templates dir in your project.
 
 
     SHOP_HANDLER_PAYMENT = 'cartridge_stripe.payment_handler'
-    SHOP_CHECKOUT_FORM_CLASS = 'cartridge_stripe.forms.OrderForm'
 
     ZEBRA_ENABLE_APP = True
 
+Update the urls.py. Add the following line above the r'^shop/'.
+::
+    url(r'^shop/checkout/$', 'cartridge.shop.views.checkout_steps', name='checkout_steps',
+       kwargs=dict(form_class=OrderForm)),
 
 =======
 Style
