@@ -43,6 +43,13 @@ Update the urls.py. Add the following line above the r'^shop/'.
        kwargs=dict(form_class=OrderForm)),
 
 =======
+Optional
+=======
+cartridg-stripe will by default accept payments in USD. If you need to you can change the currency stripe should accept payment in. Update settings.py with the following line. Replace 'cad' with your currency of choice.
+::
+    SHOP_CHARGE_CURRENCY = 'cad'
+
+=======
 Style
 =======
 
