@@ -31,7 +31,7 @@ def payment_handler(request, order_form, order):
     tok = order_form.cleaned_data['stripe_token']
     total = order.total
     try:
-        charge = stripe.Charge.create(amount=int(total) * 100,
+        charge = stripe.Charge.create(amount=int(total *100),
                                       currency=CURRENCY,
                                       card=tok,
                                       description=order)
