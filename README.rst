@@ -37,15 +37,22 @@ or copy it to the templates dir in your project.
 
     ZEBRA_ENABLE_APP = True
 
-Update the urls.py. Add the following line above the r'^shop/'.
+Update the urls.py.  Add the following line after the other package imports at the top.
 ::
+    # Need to pull in the stripe OrderForm.
+    from cartridge_stripe.forms import OrderForm
+
+
+Add the following line above the r'^shop/'.
+::
+    # Cartridge-stripe URLs.
     url(r'^shop/checkout/$', 'cartridge.shop.views.checkout_steps', name='checkout_steps',
        kwargs=dict(form_class=OrderForm)),
 
 =======
 Optional
 =======
-cartridg-stripe will by default accept payments in USD. If you need to you can change the currency stripe should accept payment in. Update settings.py with the following line. Replace 'cad' with your currency of choice.
+cartridge-stripe will by default accept payments in USD. If you need to you can change the currency stripe should accept payment in. Update settings.py with the following line. Replace 'cad' with your currency of choice.
 ::
     SHOP_CHARGE_CURRENCY = 'cad'
 
