@@ -3,6 +3,10 @@ cartridge-stripe
 
 Stripe_ credit card processing integration with Cartridge_.
 
+This should not be used anymore.
+Instead, use the following setting to use Cartridge's built in stripe support.
+SHOP_HANDLER_PAYMENT = "cartridge.shop.payment.stripe_api.process"
+
 .. _Cartridge: htps://cartridge.jupo.org
 .. _Stripe: https://stripe.com/docs
 
